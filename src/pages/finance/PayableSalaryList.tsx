@@ -1,6 +1,7 @@
 import { useMemo, useState, useEffect } from "react";
 import { toast } from "sonner";
 import { nanoid } from "@/lib/utils";
+import * as XLSX from "xlsx";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -13,7 +14,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Search, CheckCircle2, RefreshCw, Calendar } from "lucide-react";
+import { Search, CheckCircle2, RefreshCw, Calendar, Download } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useAppStore } from "@/store";
 import { PaymentDialog } from "@/components/finance/PaymentDialog";
@@ -179,6 +180,33 @@ export function PayableSalaryList() {
 
   const selected = rows.find((r) => r.id === selectedId);
 
+  function exportExcel() {
+    if (rows.length === 0) {
+      toast.error("当前月份没有可导出的薪资记录");
+      return;
+    }
+    const header = ["工资单号", "往来单位", "应付金额", "应付日期", "付款状态"];
+    const data = rows.map((s) => [
+      s.salary_no,
+      s.employee_name,
+      s.amount,
+      s.month,
+      s.status === "paid" ? "已发放" : "待发放",
+    ]);
+    const ws = XLSX.utils.aoa_to_sheet([header, ...data]);
+    ws["!cols"] = [
+      { wch: 28 },
+      { wch: 14 },
+      { wch: 14 },
+      { wch: 14 },
+      { wch: 12 },
+    ];
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "员工薪资应付");
+    XLSX.writeFile(wb, `员工薪资应付_${month}.xlsx`);
+    toast.success(`已导出 ${month} 薪资明细`);
+  }
+
   function handlePay(data: {
     amount: number;
     payment_date: string;
@@ -256,6 +284,10 @@ export function PayableSalaryList() {
           <Button variant="outline" size="sm" onClick={refreshSalaries}>
             <RefreshCw className="mr-1 h-4 w-4" />
             刷新工资
+          </Button>
+          <Button variant="outline" size="sm" onClick={exportExcel}>
+            <Download className="mr-1 h-4 w-4" />
+            导出Excel
           </Button>
           {[
             { v: "all", l: "全部" },
