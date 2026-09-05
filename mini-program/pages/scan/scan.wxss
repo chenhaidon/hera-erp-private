@@ -1,0 +1,14 @@
+.scan-container {
+  padding-top: 48px;
+}
+
+.scan-card {
+  text-align: center;
+  padding-bottom: 24px;
+}
+
+.scan-hint {
+  color: #6B7280;
+  font-size: 13px;
+  margin: 12px 0 24px;
+}

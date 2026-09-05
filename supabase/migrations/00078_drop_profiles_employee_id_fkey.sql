@@ -1,0 +1,1 @@
+ALTER TABLE profiles DROP CONSTRAINT IF EXISTS profiles_employee_id_fkey;

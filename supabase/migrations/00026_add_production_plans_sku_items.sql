@@ -1,0 +1,1 @@
+ALTER TABLE public.production_plans ADD COLUMN IF NOT EXISTS sku_items jsonb DEFAULT '[]'::jsonb;

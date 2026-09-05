@@ -1,0 +1,36 @@
+export default {
+  pages: [
+    'pages/login/index',
+    'pages/index/index',
+    'pages/production/index',
+    'pages/production/detail',
+    'pages/quality/index',
+    'pages/quality/detail',
+    'pages/inventory/index',
+    'pages/marketing/index',
+    'pages/purchase/index',
+    'pages/approval/index',
+    'pages/profile/index',
+    'pages/scan/index',
+    'pages/privacy/index',
+    'pages/double-list/index',
+  ],
+  window: {
+    backgroundTextStyle: 'light',
+    navigationBarBackgroundColor: '#020202',
+    navigationBarTitleText: '金龙工艺',
+    navigationBarTextStyle: 'white',
+  },
+  tabBar: {
+    color: '#888888',
+    selectedColor: '#FF4500',
+    backgroundColor: '#0A0A0A',
+    borderStyle: 'black',
+    list: [
+      { pagePath: 'pages/index/index', text: '首页' },
+      { pagePath: 'pages/production/index', text: '生产' },
+      { pagePath: 'pages/quality/index', text: '质量' },
+      { pagePath: 'pages/profile/index', text: '我的' },
+    ],
+  },
+};

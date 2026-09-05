@@ -1,0 +1,20 @@
+.result-group {
+  display: flex;
+  gap: 12px;
+}
+
+.result-option {
+  flex: 1;
+  text-align: center;
+  padding: 12px;
+  border: 1px solid #E5E7EB;
+  border-radius: 6px;
+  background: #FFFFFF;
+}
+
+.result-option.active {
+  border-color: #7C3AED;
+  background: #F3E8FF;
+  color: #7C3AED;
+  font-weight: 500;
+}

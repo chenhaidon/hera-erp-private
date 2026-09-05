@@ -1,0 +1,42 @@
+<view class="container">
+  <view class="card">
+    <view class="card-title">当前角色</view>
+    <view class="role-list">
+      <view class="role-option {{currentRole === 'worker' ? 'active' : ''}}" bindtap="selectRole" data-role="worker">
+        <view class="role-label">报工人</view>
+      </view>
+      <view class="role-option {{currentRole === 'inspector' ? 'active' : ''}}" bindtap="selectRole" data-role="inspector">
+        <view class="role-label">质检员</view>
+      </view>
+    </view>
+  </view>
+
+  <button class="btn-primary btn-block" bindtap="scanCode">扫码报工 / 质检</button>
+
+  <view class="card">
+    <view class="card-title">生产工单</view>
+    <block wx:if="{{workOrders.length}}">
+      <view class="order-item" wx:for="{{workOrders}}" wx:key="work_no" bindtap="goFlowCard" data-workno="{{item.work_no}}">
+        <view class="order-header">
+          <view class="order-no">{{item.work_no}}</view>
+          <view class="badge {{statusBadgeClass(item.status)}}">{{statusLabel(item.status)}}</view>
+        </view>
+        <view class="order-info">
+          <view class="info-row">
+            <text class="label">产品</text>
+            <text class="value">{{item.product_name || '-'}}</text>
+          </view>
+          <view class="info-row">
+            <text class="label">计划/完成</text>
+            <text class="value">{{item.completed_quantity || 0}} / {{item.plan_quantity || 0}}</text>
+          </view>
+          <view class="info-row">
+            <text class="label">进度</text>
+            <text class="value">{{item.progress || 0}}%</text>
+          </view>
+        </view>
+      </view>
+    </block>
+    <view wx:else class="empty">暂无工单数据</view>
+  </view>
+</view>

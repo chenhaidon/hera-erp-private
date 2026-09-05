@@ -1,0 +1,1 @@
+BEGIN; DO $$ ... $$; COMMIT;

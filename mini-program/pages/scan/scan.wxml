@@ -1,0 +1,13 @@
+<view class="container scan-container">
+  <view class="card scan-card">
+    <view class="card-title">扫描生产流转卡</view>
+    <view class="scan-hint">对准工单流转卡上的二维码，自动识别并进入对应操作页面</view>
+    <button class="btn-primary btn-block" bindtap="startScan">开始扫码</button>
+  </view>
+
+  <view class="card">
+    <view class="card-title">手动输入工单编号</view>
+    <input class="input" placeholder="请输入工单编号" value="{{manualWorkNo}}" bindinput="onManualInput" />
+    <button class="btn-secondary btn-block" bindtap="manualEnter">进入工单</button>
+  </view>
+</view>

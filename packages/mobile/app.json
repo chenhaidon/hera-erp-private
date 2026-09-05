@@ -1,0 +1,54 @@
+{
+  "expo": {
+    "name": "金龙工艺移动端",
+    "slug": "jinlong-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.jinlong.mobile",
+      "infoPlist": {
+        "NSCameraUsageDescription": "允许 $(PRODUCT_NAME) 访问相机以扫描二维码和拍摄照片",
+        "NSPhotoLibraryUsageDescription": "允许 $(PRODUCT_NAME) 访问相册以选择上传图片"
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.jinlong.mobile"
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "single",
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      ["expo-camera", {
+        "cameraPermission": "允许 $(PRODUCT_NAME) 使用相机扫描二维码和拍摄照片"
+      }],
+      ["expo-image-picker", {
+        "cameraPermission": "允许 $(PRODUCT_NAME) 访问相机以拍摄照片",
+        "photosPermission": "允许 $(PRODUCT_NAME) 访问相册以选择图片"
+      }]
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      }
+    }
+  }
+}

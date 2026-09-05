@@ -1,0 +1,2 @@
+ALTER TABLE outsource_processing_payments 
+  DROP CONSTRAINT IF EXISTS outsource_processing_payments_work_order_id_fkey RESTRICT;

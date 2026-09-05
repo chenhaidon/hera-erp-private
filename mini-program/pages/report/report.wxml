@@ -1,0 +1,57 @@
+<view class="container">
+  <view class="card">
+    <view class="card-title">工单信息</view>
+    <view class="row">
+      <text class="label">工单编号</text>
+      <text class="value">{{workOrder.work_no || '-'}}</text>
+    </view>
+    <view class="row">
+      <text class="label">产品名称</text>
+      <text class="value">{{workOrder.product_name || '-'}}</text>
+    </view>
+    <view class="row">
+      <text class="label">计划数量</text>
+      <text class="value">{{workOrder.plan_quantity || 0}}</text>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">当前工序</view>
+    <block wx:if="{{currentProcess}}">
+      <view class="row">
+        <text class="label">工序名称</text>
+        <text class="value">{{currentProcess.name}}</text>
+      </view>
+      <view class="row">
+        <text class="label">计划数量</text>
+        <text class="value">{{currentProcess.plan_quantity}}</text>
+      </view>
+      <view class="row">
+        <text class="label">已完成</text>
+        <text class="value">{{currentProcess.completed_quantity}}</text>
+      </view>
+      <view class="row">
+        <text class="label">剩余数量</text>
+        <text class="value">{{currentProcess.remaining}}</text>
+      </view>
+      <view class="row" style="border-bottom: none;">
+        <text class="label">状态</text>
+        <view class="badge {{processBadgeClass(currentProcess.status)}}">{{processStatusLabel(currentProcess.status)}}</view>
+      </view>
+    </block>
+    <view wx:else class="empty">该工单暂无待报工工序</view>
+  </view>
+
+  <view class="card" wx:if="{{currentProcess}}">
+    <view class="card-title">本次报工</view>
+    <view class="section">
+      <view class="section-title">本次完成数量</view>
+      <input class="input" type="number" placeholder="请输入本次完成数量" value="{{form.completed_qty}}" bindinput="onQtyInput" />
+    </view>
+    <view class="section">
+      <view class="section-title">备注</view>
+      <textarea class="input" style="height: 80px;" placeholder="选填" value="{{form.remark}}" bindinput="onRemarkInput" />
+    </view>
+    <button class="btn-primary btn-block" bindtap="submit">提交报工</button>
+  </view>
+</view>

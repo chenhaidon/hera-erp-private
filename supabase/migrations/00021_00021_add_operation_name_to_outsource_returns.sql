@@ -1,0 +1,1 @@
+ALTER TABLE public.outsource_returns ADD COLUMN IF NOT EXISTS operation_name text;

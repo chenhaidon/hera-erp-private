@@ -1,0 +1,62 @@
+<view class="container">
+  <view class="card">
+    <view class="card-title">工单信息</view>
+    <view class="row">
+      <text class="label">工单编号</text>
+      <text class="value">{{workOrder.work_no || '-'}}</text>
+    </view>
+    <view class="row">
+      <text class="label">产品名称</text>
+      <text class="value">{{workOrder.product_name || '-'}}</text>
+    </view>
+    <view class="row">
+      <text class="label">计划数量</text>
+      <text class="value">{{workOrder.plan_quantity || 0}}</text>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">待质检工序</view>
+    <block wx:if="{{currentProcess}}">
+      <view class="row">
+        <text class="label">工序名称</text>
+        <text class="value">{{currentProcess.name}}</text>
+      </view>
+      <view class="row">
+        <text class="label">已完成数量</text>
+        <text class="value">{{currentProcess.completed_quantity}}</text>
+      </view>
+      <view class="row" style="border-bottom: none;">
+        <text class="label">状态</text>
+        <view class="badge badge-orange">待质检</view>
+      </view>
+    </block>
+    <view wx:else class="empty">该工单暂无待质检工序</view>
+  </view>
+
+  <view class="card" wx:if="{{currentProcess}}">
+    <view class="card-title">检验项目</view>
+    <block wx:if="{{inspectionItems.length}}">
+      <view class="section" wx:for="{{inspectionItems}}" wx:key="name">
+        <view class="section-title">{{item.name}}（标准值：{{item.standard}}）</view>
+        <input class="input" data-index="{{index}}" placeholder="请输入实测值" value="{{item.value}}" bindinput="onItemValueInput" />
+      </view>
+    </block>
+    <view wx:else class="empty">该工序暂无检验标准，请直接判定</view>
+
+    <view class="section">
+      <view class="section-title">判定结果</view>
+      <view class="result-group">
+        <view class="result-option {{form.result === 'qualified' ? 'active' : ''}}" bindtap="selectResult" data-result="qualified">合格</view>
+        <view class="result-option {{form.result === 'unqualified' ? 'active' : ''}}" bindtap="selectResult" data-result="unqualified">不合格</view>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section-title">备注</view>
+      <textarea class="input" style="height: 80px;" placeholder="选填" value="{{form.remark}}" bindinput="onRemarkInput" />
+    </view>
+
+    <button class="btn-primary btn-block" bindtap="submit">提交质检</button>
+  </view>
+</view>

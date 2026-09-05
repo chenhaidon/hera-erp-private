@@ -1,0 +1,1 @@
+ALTER TABLE public.work_orders ADD COLUMN IF NOT EXISTS sku_id text; ALTER TABLE public.work_orders ADD COLUMN IF NOT EXISTS sku_summary text;

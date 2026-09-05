@@ -1,0 +1,60 @@
+.role-list {
+  display: flex;
+  gap: 16px;
+}
+
+.role-option {
+  flex: 1;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  background: #FFFFFF;
+}
+
+.role-option.active {
+  border-color: #7C3AED;
+  background: #F3E8FF;
+}
+
+.role-label {
+  font-size: 15px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.role-option.active .role-label {
+  color: #7C3AED;
+}
+
+.order-item {
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.order-no {
+  font-weight: 600;
+  font-size: 15px;
+  color: #1F2937;
+}
+
+.order-info {
+  border-top: 1px solid #F3F4F6;
+  padding-top: 8px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+}
