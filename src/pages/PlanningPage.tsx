@@ -1239,17 +1239,22 @@ function MPSTab() {
                     {p.production_line || "-"}
                   </TableCell>
                   <TableCell className="whitespace-nowrap">
+                    {(() => {
+                      const loadRate = Number(p.load_rate) || 0;
+                      return (
                     <div className="flex items-center gap-2">
                       <Progress
-                        value={Math.min(p.load_rate, 100)}
+                        value={Math.min(loadRate, 100)}
                         className="h-2 w-20"
                       />
                       <span
-                        className={`text-xs ${p.load_rate > 100 ? "text-destructive font-semibold" : ""}`}
+                        className={`text-xs ${loadRate > 100 ? "text-destructive font-semibold" : ""}`}
                       >
-                        {p.load_rate.toFixed(1)}%
+                        {loadRate.toFixed(1)}%
                       </span>
                     </div>
+                      );
+                    })()}
                   </TableCell>
                   <TableCell className="whitespace-nowrap">
                     <Badge

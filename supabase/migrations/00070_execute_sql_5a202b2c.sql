@@ -11,7 +11,9 @@ DECLARE
 BEGIN
   SELECT data INTO proc FROM entity_store WHERE entity_type = 'processes' AND data->>'code' = 'G-011' LIMIT 1;
   IF proc IS NULL THEN
-    RAISE EXCEPTION 'G-011 检验工序不存在';
+    -- 本地全新部署时业务数据尚未导入（数据修复类迁移的修改已包含在最终导出数据中），直接跳过
+    RAISE NOTICE 'G-011 检验工序不存在，跳过本数据修复迁移（本地部署安全跳过）';
+    RETURN;
   END IF;
 
   FOR rec IN

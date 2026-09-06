@@ -1,3 +1,7 @@
+# 欢迎使用你的秒哒应用代码包
+秒哒应用链接
+    URL:https://www.miaoda.cn/projects/app-crmh8tn256v5
+
 # 金龙工艺移动端
 
 基于 Expo + React Native + Supabase 的移动端应用，与 Web 端共享同一套 Supabase 数据库与认证体系。

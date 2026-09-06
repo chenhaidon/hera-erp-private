@@ -1,3 +1,7 @@
+# 欢迎使用你的秒哒应用代码包
+秒哒应用链接
+    URL:https://www.miaoda.cn/projects/app-crmh8tn256v5
+
 > Why do I have a folder named ".expo" in my project?
 The ".expo" folder is created when an Expo project is started using "expo start" command.
 > What do the files contain?

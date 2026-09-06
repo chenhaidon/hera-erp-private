@@ -56,6 +56,7 @@ DECLARE
   v_now timestamptz := now();
   v_workers text[];
   v_qcs text[];
+  v_work_no text; -- 本地部署修复：原迁移遗漏该变量声明（SQLSTATE 42601）
 BEGIN
   SELECT array_agg(e.data->>'name' ORDER BY random())
   INTO v_workers

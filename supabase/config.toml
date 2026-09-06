@@ -1,3 +1,12 @@
+# 本地部署调整：前端启动时一次性拉取 entity_store 全量数据（6000+ 行），
+# PostgREST 默认 max_rows=1000 会截断导致部分模块（如员工档案）数据为空。
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "storage", "graphql_public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 100000
+
 [auth.email]
 enable_confirmations = false
 

@@ -34,3 +34,11 @@ history/*.json
 /tasks
 .native-wind-cache
 .vite
+
+# Environment files — NEVER commit secrets
+.env
+.env.*
+!.env.example
+supabase/.env
+# Supabase 运行时生成的密钥/临时文件（含 JWT secret），绝不提交
+supabase/.temp/
